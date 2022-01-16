@@ -4,15 +4,18 @@ import { useSession, signOut } from 'next-auth/client';
 import classes from './main-navigation.module.css';
 
 function MainNavigation() {
+  // nextjs' useSession gives us tokens if we have an active session,
+  // stores them in cookies (dev tools, applications, cookies)
   const [session, loading] = useSession();
 
   function logoutHandler() {
+    // also provided by next-auth
     signOut();
   }
 
   return (
     <header className={classes.header}>
-      <Link href='/'>
+      <Link href="/">
         <a>
           <div className={classes.logo}>Next Auth</div>
         </a>
@@ -21,12 +24,12 @@ function MainNavigation() {
         <ul>
           {!session && !loading && (
             <li>
-              <Link href='/auth'>Login</Link>
+              <Link href="/auth">Login</Link>
             </li>
           )}
           {session && (
             <li>
-              <Link href='/profile'>Profile</Link>
+              <Link href="/profile">Profile</Link>
             </li>
           )}
           {session && (

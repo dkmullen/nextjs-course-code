@@ -10,6 +10,8 @@ async function handler(req, res) {
 
   const session = await getSession({ req: req });
 
+  // Here is where next-auth/client validates the user/session
+  // and protects the api route
   if (!session) {
     res.status(401).json({ message: 'Not authenticated!' });
     return;

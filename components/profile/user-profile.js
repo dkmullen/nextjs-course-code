@@ -2,6 +2,7 @@ import ProfileForm from './profile-form';
 import classes from './user-profile.module.css';
 
 function UserProfile() {
+  // this client-side page guard is replaced by serverside, in pages/profile.js
   // const [isLoading, setIsLoading] = useState(true);
 
   // useEffect(() => {
@@ -23,8 +24,8 @@ function UserProfile() {
       method: 'PATCH',
       body: JSON.stringify(passwordData),
       headers: {
-        'Content-Type': 'application/json'
-      }
+        'Content-Type': 'application/json',
+      },
     });
 
     const data = await response.json();
